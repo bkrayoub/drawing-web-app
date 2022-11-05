@@ -1,0 +1,55 @@
+body {
+    background-color: rgb(19, 19, 19);
+    /* margin: 0; */
+}
+canvas {
+    border: #fff 2px solid;
+    
+}
+.workSpace {
+    width: 100%;
+    height: 700px;
+    background-color: rgb(250, 210, 248);
+}
+
+.tools {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.tools .color-field {
+    height: 40px;
+    width: 40px;
+    min-height: 40px;
+    min-height: 40px;
+    cursor: pointer;
+    border-radius: 100%;
+    border: 2px solid #fff;
+    margin: 10px;
+    display: inline-block;
+    box-sizing: border-box;
+}
+
+.button {
+    background-color: antiquewhite;
+    width: 80px;
+    height: 40px;
+    border: 0px;
+    border-radius: 50px;
+    margin: 0 5px;
+}
+
+.button:hover {
+    background-color: rgb(255, 199, 126);
+}
+.button:active {
+    background-color: rgb(230, 165, 81);
+}
+
+.pen-size {
+    width: 150px !important; 
+
+}
