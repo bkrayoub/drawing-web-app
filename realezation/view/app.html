@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style/app-style.css">
+    <script src="../script/jquery.js"></script>
+    <title>Paint Game</title>
+</head>
+<body>
+    <div class="container">
+        <div class="tools">
+            <div id="main-tools">
+                <div><img src="../img/rubber.svg" ></div>
+                <div><img src="../img/pen.svg" onclick="isPencil = false"></div>
+                <div><img src="../img/bucket.svg"></div>
+                <div><img src="../img/brush.svg" onclick="isPencil = true"></div>
+            </div>
+            <div id="penResize">
+                <lable>Brush size</lable>
+                <input type="range" min="1" max="100" value="5" oninput="draw_size = this.value">
+            </div>
+            <div id="colors">
+                <div onclick="color_change(this)" class="color-field" style="background-color: #FF0000;"></div>
+                <div onclick="color_change(this)" class="color-field" style="background-color: #FF8A00;"></div>
+                <div onclick="color_change(this)" class="color-field" style="background-color: #0075FF"></div>
+                <div onclick="color_change(this)" class="color-field" style="background-color: #00FFFF"></div>
+                <div onclick="color_change(this)" class="color-field" style="background-color: #14FF00"></div>
+                <div onclick="color_change(this)" class="color-field" style="background-color: #DBFF00"></div>
+            </div>
+            <div id="side-tooles">
+                <div><div class="color-field"><input type="color" oninput="draw_color = this.value"><img src="../img/plus.svg"></div></div>
+                <div><img src="../img/clear.svg" id="clear" onclick="clear_canvas()"></div>
+            </div>
+        </div>
+        <div class="right-div">
+            <nav>
+                <ul>
+                    <li onclick="window.location.href = 'home.html'">Games list</li>
+                    <li onclick="window.open('app.html')">Open new canvas</li>
+                    <li id="saveImage">Save as image</li>
+                </ul>
+            </nav>
+            <div class="artboard">
+                <div id="undoDiv">
+                    <img src="../img/undo.svg" onclick="undoLast()">
+                </div>
+                <canvas id="canvas"></canvas>
+            </div>
+        </div>
+    </div>
+    <script src="../script/app.js"></script>
+</body>
+</html>

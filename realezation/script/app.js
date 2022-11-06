@@ -1,7 +1,9 @@
 const canvas = document.getElementById('canvas');
+const saveBtn = document.getElementById('saveImage');
 
-canvas.width = window.innerWidth - 60;
-canvas.height = 500;
+
+canvas.width = 900;
+canvas.height = 400;
 
 let context = canvas.getContext('2d');
 context.fillStyle = 'white';
@@ -10,11 +12,26 @@ context.fillRect(0,0,canvas.width,canvas.height);
 let startBackgroundColor = 'white';
 let draw_color = 'black';
 let draw_size = '5';
+let isPencil = true;
 let is_drawing = false;
 
 let restoreArray = [];
 let index = -1;
 
+
+
+saveBtn.addEventListener('click', function(){
+    if(window.navigator.msSaveBlob) {
+        window.navigator.msSaveBlob(canvas.msSaveBlob(), 'canvas-image.png')
+    } else {
+        const a = document.createElement('a');
+        document.body.appendChild(a);
+        a.href = canvas.toDataURL();
+        a.download = 'canvas-image.png';
+        a.click();
+        document.body.removeChild(a);
+    }
+});
 
 canvas.addEventListener('touchstart', start, false);
 canvas.addEventListener('touchmove', draw, false);
@@ -29,7 +46,6 @@ canvas.addEventListener('mouseout', stop, false);
 function color_change(e) {
     draw_color = e.style.backgroundColor;
 }
-
 
 function start(e) {
     is_drawing = true;
@@ -51,6 +67,34 @@ function draw(e) {
 
     e.preventDefault();
 }
+// function start(e) {
+//     is_drawing = true;
+//     context.beginPath();
+//     context.moveTo(e.clientX, e.clientY )
+//     e.preventDefault();
+// }
+// function draw(e) {
+//     if(is_drawing) {
+//         if(isPencil) {
+//             context.lineTo(e.clientX, e.clientY)
+//             context.strokeStyle = draw_color;
+//             context.lineWidth = draw_size;
+//             context.lineCap = 'round';
+//             context.lineJoin = 'round'
+//             context.stroke()
+//         }
+//         else {
+//             context.lineTo(e.clientX, e.clientY)
+//                 context.strokeStyle = '#000';
+//                 context.lineWidth = "2";
+//                 context.lineCap = 'butt';
+//                 context.lineJoin = 'butt'
+//                 context.stroke()
+//         }
+//     }
+
+//     e.preventDefault();
+// }
 
 function stop(e) {
     // console.log('work!')
