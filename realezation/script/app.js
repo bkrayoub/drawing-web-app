@@ -46,18 +46,21 @@ canvas.addEventListener('mouseout', stop, false);
 function color_change(e) {
     draw_color = e.style.backgroundColor;
 }
-
+function fillCanvas() {
+    context.fillStyle = draw_color;
+    context.fillRect(0,0,canvas.width,canvas.height);
+}
 function start(e) {
     is_drawing = true;
     context.beginPath();
-    context.moveTo(e.clientX - canvas.offsetLeft,
-                   e.clientY - canvas.offsetTop)
+    context.moveTo(e.clientX - canvas.offsetLeft  - canvas.getBoundingClientRect().top,
+                   e.clientY - canvas.offsetTop - canvas.getBoundingClientRect().left)
     e.preventDefault();
 }
 function draw(e) {
     if(is_drawing) {
-        context.lineTo(e.clientX - canvas.offsetLeft,
-                       e.clientY - canvas.offsetTop)
+        context.lineTo(e.clientX - canvas.offsetLeft - canvas.getBoundingClientRect().top,
+                       e.clientY - canvas.offsetTop - canvas.getBoundingClientRect().left)
         context.strokeStyle = draw_color;
         context.lineWidth = draw_size;
         context.lineCap = 'round';
@@ -127,7 +130,8 @@ function clear_canvas() {
  function undoLast() {
     // console.log('work!')
     if(index <= 0) {
-        clear_canvas();
+        context.fillStyle = 'white';
+        context.fillRect(0,0,canvas.width,canvas.height);clear_canvas();
     }
     else {
         index -= 1;

@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <canvas id="canvas"></canvas>
     <div class="workSpace">
-        <canvas id="canvas"></canvas>
         <div class="tools">
             <button type="button" class="button" id="saveImage">save as image</button>
             <button onclick="undoLast()" type="button" class="button">Undo</button>
@@ -22,7 +22,7 @@
             <div onclick="color_change(this)" class="color-field" style="background-color: purple;"></div>
 
             <input oninput="draw_color = this.value" type="color" class="color-picker"> 
-            <input oninput="draw_size = this.value" type="range" min="1" max="100" class="pen-size" value="5">
+            <input oninput="draw_size = this.value*5" type="range" min="1" max="10" class="pen-size" value="1">
         </div>
     </div>
 

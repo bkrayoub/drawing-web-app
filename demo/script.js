@@ -2,7 +2,7 @@ const canvas = document.getElementById('canvas');
 const saveBtn = document.getElementById('saveImage');
 
 
-canvas.width = 1000;
+canvas.width = window.innerWidth;
 canvas.height = 500;
 
 let context = canvas.getContext('2d');

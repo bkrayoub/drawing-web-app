@@ -17,7 +17,7 @@ canvas {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    margin-top: 50px;
+    /* margin-top: 50px; */
 }
 
 .tools .color-field {
@@ -52,4 +52,8 @@ canvas {
 .pen-size {
     width: 150px !important; 
 
+}
+#zbi {
+    position: absolute;   
+    right: 0%;
 }
